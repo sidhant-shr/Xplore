@@ -1,7 +1,8 @@
 import { Alchemy, Network } from 'alchemy-sdk';
 import { useEffect, useState } from 'react';
-
+import { Fragment } from 'react';
 import './App.css';
+import Header from './components/header/Header';
 
 // Refer to the README doc for more information about using API
 // keys in client-side code. You should never do this in production
@@ -27,10 +28,16 @@ function App() {
       setBlockNumber(await alchemy.core.getBlockNumber());
     }
 
-    getBlockNumber();
+  getBlockNumber();
   });
 
-  return <div className="App">Block Number: {blockNumber}</div>;
+  return (
+  <Fragment>
+  <Header />
+  <div className="App"> Latest Block Number: {blockNumber}</div>;
+  </Fragment>
+
+  )
 }
 
 export default App;
