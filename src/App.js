@@ -1,8 +1,7 @@
 import { Alchemy, Network } from 'alchemy-sdk';
-import { useEffect, useState } from 'react';
-import { Fragment } from 'react';
+import { Route,Routes } from 'react-router-dom';
 import './App.css';
-import Header from './components/header/Header';
+import NavBar from './components/navbar/NavBar';
 
 // Refer to the README doc for more information about using API
 // keys in client-side code. You should never do this in production
@@ -13,29 +12,29 @@ const settings = {
 };
 
 
-// In this week's lessons we used ethers.js. Here we are using the
-// Alchemy SDK is an umbrella library with several different packages.
-//
-// You can read more about the packages here:
-//   https://docs.alchemy.com/reference/alchemy-sdk-api-surface-overview#api-surface
-const alchemy = new Alchemy(settings);
+
+ export const alchemy = new Alchemy(settings);
 
 function App() {
-  const [blockNumber, setBlockNumber] = useState();
 
-  useEffect(() => {
-    async function getBlockNumber() {
-      setBlockNumber(await alchemy.core.getBlockNumber());
-    }
-
-  getBlockNumber();
-  });
+  
 
   return (
-  <Fragment>
-  <Header />
-  <div className="App"> Latest Block Number: {blockNumber}</div>;
-  </Fragment>
+ 
+  <div className="App">
+    <NavBar />
+    <Routes>
+      <Route path = "/specific" element = {<SpecificPage />}/>
+      <Route path = "/xplore" element = {<XplorerPage />}/>
+      <Route path = "/transaction:id" element = {<TransactionDetails />}/>
+      <Route path = "/" element = {<XplorerPage />}/>
+      <Route path = "*" element = {<DnePage />}/>
+
+    </Routes>
+
+
+  </div>
+ 
 
   )
 }

@@ -8,3 +8,15 @@
     font-size: calc(10px + 2vmin);
     color: white;
   }
+
+  .NavItem{
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .NavItem:hover {
+    text-decoration: underline;
+  }
