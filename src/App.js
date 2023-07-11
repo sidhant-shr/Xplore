@@ -2,10 +2,12 @@ import { Alchemy, Network } from 'alchemy-sdk';
 import { Route,Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/navbar/NavBar';
+import DnePage from './pages/DnePage/DnePage';
+import XplorerPage from './pages/BlockExplorerPage/XplorerPage';
+import SpecificPage from './pages/AccountsPage/SpecificPage';
+import TransactionDetailsPage from './pages/TransactionDetailsPage/TransactionDetailsPage';
 
-// Refer to the README doc for more information about using API
-// keys in client-side code. You should never do this in production
-// level code.
+
 const settings = {
   apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
   network: Network.ETH_MAINNET,
@@ -26,7 +28,7 @@ function App() {
     <Routes>
       <Route path = "/specific" element = {<SpecificPage />}/>
       <Route path = "/xplore" element = {<XplorerPage />}/>
-      <Route path = "/transaction:id" element = {<TransactionDetails />}/>
+      <Route path = "/transaction:id" element = {<TransactionDetailsPage />}/>
       <Route path = "/" element = {<XplorerPage />}/>
       <Route path = "*" element = {<DnePage />}/>
 

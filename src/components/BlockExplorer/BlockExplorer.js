@@ -2,7 +2,6 @@ import { Grid, TextField } from "@mui/material";
 import React, { Fragment, useEffect, useState, } from "react";
 import './BlockExplorer.css'
 
-import React from 'react'
 import useDebounce from "../../hooks/useDebounce";
 import { alchemy } from "../../App";
 import Loading from "../Loading/Loading";
