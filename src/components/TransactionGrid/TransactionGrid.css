@@ -1,0 +1,9 @@
+.Navlink{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.Navlink:hover{
+    text-decoration: underline;
+}

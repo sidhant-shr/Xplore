@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <div className='App-header'>
       <NavLink to = "/xplore" className='NavItem'>
-        Xplore - Eth Block Explorer
+        Xplore 
       </NavLink>
       <NavLink to = "/specific" className='NavItem'>
         Accounts
