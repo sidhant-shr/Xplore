@@ -1,36 +1,29 @@
-import React from 'react'
-import DataTable from '../DataTable/DataTable'
-import './TransactionGrid.css'
-import { NavLink } from 'react-router-dom'
 
-
-
+import React from "react";
+import { NavLink } from "react-router-dom";
+import DataTable from "../DataTable/DataTable";
+import "./TransactionGrid.css";
 
 const columns = [
-    {
-        field: "id",
-        headerName: "Txn",
-        sortable: false,
-        width: 630,
+	{
+		field: "id",
+		headerName: "Tx",
+		sortable: false,
+		width: 630,
+		renderCell: ({ row: { id, value, asset } }) => (
+			<NavLink
+				state={{ value, asset }}
+				to={{ pathname: `/transaction/${id}` }}
+				className='Navlink'
+			>
+				{id}
+			</NavLink>
+		),
+	},
+];
 
-        renderCell: ({row : {id,value,asset}}) => (
-            <NavLink
-                state={{value, asset}}
-                to = {{pathname: `/transaction/${id}` }}
-                className="Navlink"
-            >
-                {id}
-
-            </NavLink>
-
-        )
-
-    }
-]
-const TransactionGrid = ({rows}) => {
-  return (
-    <DataTable columns = {columns} rows = {rows} />
-  )
-}
+const TransactionGrid = ({ rows }) => {
+	return <DataTable columns={columns} rows={rows} />;
+};
 
 export default TransactionGrid;

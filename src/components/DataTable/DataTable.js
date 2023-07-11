@@ -7,8 +7,8 @@ const DataTable = ({columns, rows}) => {
         <DataGrid
             rows={rows}
             columns={columns}
-            pageSize={12}
-            rowsPerPageOptions={[12]}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
             autoHeight
         />
     </div>

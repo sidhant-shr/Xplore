@@ -5,6 +5,7 @@ import Loading from '../../components/Loading/Loading';
 import { Card, CardContent, Chip, Stack } from '@mui/material';
 import TransactionItem from '../../components/TransactionItem/TransactionItem';
 import { Utils } from 'alchemy-sdk';
+import "./TransactionDetailsPage.css"
 
 const transactionStatusMap = {
     0: "Failed",
