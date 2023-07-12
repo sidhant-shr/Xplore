@@ -4,6 +4,7 @@ import TransactionGrid from "../TransactionGrid/TransactionGrid";
 import useDebounce from "../../hooks/useDebounce";
 import { Grid, TextField } from "@mui/material";
 import Loading from "../Loading/Loading";
+import "./BlockExplorer.css"
 
 const BlockExplorer = () => {
 	const [blockNumber, setBlockNumber] = useState(1);
@@ -36,7 +37,7 @@ const BlockExplorer = () => {
 
 	return (
 		<>
-			<h1>Xplore- Eth block explorer</h1>
+			<h1 className="heading">Xplore- Eth block explorer</h1>
 			<hr />
 			<Grid container spacing={2}>
 				<Grid item xs={12} marginTop={2}>

@@ -23,7 +23,10 @@ const columns = [
 ];
 
 const TransactionsGrid = ({ rows }) => {
-	return <DataTable columns={columns} rows={rows} />;
+	return (
+	<div className={styles.DataFormat}>
+	<DataTable columns={columns} rows={rows} />
+	</div>)
 };
 
 export default TransactionsGrid;
