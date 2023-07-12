@@ -2,7 +2,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import DataTable from "../DataTable/DataTable";
-import "./TransactionGrid.css";
+import styles from "./TransactionsGrid.module.css";
 
 const columns = [
 	{
@@ -14,7 +14,7 @@ const columns = [
 			<NavLink
 				state={{ value, asset }}
 				to={{ pathname: `/transaction/${id}` }}
-				className='Navlink'
+				className={styles.NavLink}
 			>
 				{id}
 			</NavLink>
@@ -22,8 +22,8 @@ const columns = [
 	},
 ];
 
-const TransactionGrid = ({ rows }) => {
+const TransactionsGrid = ({ rows }) => {
 	return <DataTable columns={columns} rows={rows} />;
 };
 
-export default TransactionGrid;
+export default TransactionsGrid;

@@ -1,76 +1,75 @@
-import { Grid, TextField } from "@mui/material";
-import React, { Fragment, useEffect, useState, } from "react";
-import './BlockExplorer.css'
-
-import useDebounce from "../../hooks/useDebounce";
+import React, { useEffect, useState } from "react";
 import { alchemy } from "../../App";
-import Loading from "../Loading/Loading";
 import TransactionGrid from "../TransactionGrid/TransactionGrid";
+import useDebounce from "../../hooks/useDebounce";
+import { Grid, TextField } from "@mui/material";
+import Loading from "../Loading/Loading";
 
 const BlockExplorer = () => {
-    const [blockNum, setBlockNum] = useState(1);
-    const blockNumDebounce = useDebounce(blockNum);
-    const [blockData, setBlockData] = useState();
+	const [blockNumber, setBlockNumber] = useState(1);
+	const blockNumberDebounce = useDebounce(blockNumber);
+	const [blockInfo, setBlockInfo] = useState();
 
-    useEffect(() => {
-        async function getBlockNum() {
-            setBlockNum(await alchemy.core.getBlockNumber())
+	useEffect(() => {
+		async function getBlockNumber() {
+			setBlockNumber(await alchemy.core.getBlockNumber());
+		}
 
-        }
-        getBlockNum();
-    }, []);
+		getBlockNumber();
+	}, []);
 
-    useEffect(() => {
-        async function getBlockData() {
-            setBlockData(
-                await alchemy.core.getAssetTransfers({
-                    fromBlock: blockNumDebounce,
-                    toBlock: blockNumDebounce,
-                    category: ["external"],
-                })
-            )
-        }
-        if (blockNumDebounce && blockNumDebounce !== 1) {
-            getBlockData();
-        }
-    }, [blockNumDebounce]);
-    return (
-        <Fragment>
-            <div className="heading"> Xplore - Eth block explorer </div>
-            <Grid container spacing={2}>
-                <Grid item xs={12} marginTop={4}>
-                    <TextField
-                        label="Block number"
-                        type="number"
-                        value={blockNum}
-                        onChange={(e) => setBlockNum(+e.target.value)}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        sx={{ width: "650px" }}
+	useEffect(() => {
+		async function getBlockInfo() {
+			setBlockInfo(
+				await alchemy.core.getAssetTransfers({
+					fromBlock: blockNumberDebounce,
+					toBlock: blockNumberDebounce,
+					category: ["external"],
+				})
+			);
+		}
 
-                    />
+		if (blockNumberDebounce && blockNumberDebounce !== 1) {
+			getBlockInfo();
+		}
+	}, [blockNumberDebounce]);
 
-                </Grid>
-                {!blockData && (
-                    <Loading />
-                )}
-                {blockData && (
-                    <Grid item xs={12}>
-                        <TransactionGrid
-                            rows={blockData.transfers.map(({ hash, value, asset }) => ({
-                                id: hash,
-                                value,
-                                asset,
-                            }))}
-                        />
-                    </Grid>
-
-                )}
-            </Grid>
-
-        </Fragment>
-    )
-}
+	return (
+		<>
+			<h1>Xplore- Eth block explorer</h1>
+			<hr />
+			<Grid container spacing={2}>
+				<Grid item xs={12} marginTop={2}>
+					<TextField
+						label="Block number"
+						type="number"
+						value={blockNumber}
+						onChange={(e) => setBlockNumber(+e.target.value)}
+						InputLabelProps={{
+							shrink: true,
+						}}
+						sx={{ width: "650px" }}
+					/>
+				</Grid>
+				{!blockInfo && (
+					<Grid item xs={12}>
+						<Loading />
+					</Grid>
+				)}
+				{blockInfo && (
+					<Grid item xs={12}>
+						<TransactionGrid
+							rows={blockInfo.transfers.map(({ hash, value, asset }) => ({
+								id: hash,
+								value,
+								asset,
+							}))}
+						/>
+					</Grid>
+				)}
+			</Grid>
+		</>
+	);
+};
 
 export default BlockExplorer;

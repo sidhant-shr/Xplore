@@ -1,20 +1,18 @@
-import './NavBar.css'
+import React from "react";
+import styles from "./NavBar.module.css";
+import { NavLink } from "react-router-dom";
 
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+const Navigation = () => {
+	return (
+		<nav className={styles.Navigation}>
+			<NavLink to="/block-explorer" className={styles.NavItem}>
+				Block Explorer
+			</NavLink>
+			<NavLink to="/accounts" className={styles.NavItem}>
+				Accounts
+			</NavLink>
+		</nav>
+	);
+};
 
-const NavBar = () => {
-  return (
-    <div className='App-header'>
-      <NavLink to = "/xplore" className='NavItem'>
-        Xplore 
-      </NavLink>
-      <NavLink to = "/specific" className='NavItem'>
-        Accounts
-
-      </NavLink>
-    </div>
-  )
-}
-
-export default NavBar
+export default Navigation;
