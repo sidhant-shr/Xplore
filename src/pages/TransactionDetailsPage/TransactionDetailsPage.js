@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { alchemy } from "../../App";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import { Utils } from "alchemy-sdk";
-import  "./TransactionDetailsPage.css";
+import styles from "./TransactionDetailsPage.module.css";
 import { Card, CardContent, Chip, Stack } from "@mui/material";
 import TransactionItem from "../../components/TransactionItem/TransactionItem";
 import Loading from "../../components/Loading/Loading";
@@ -21,7 +21,7 @@ const TransactionDetailsPage = () => {
 
 	useEffect(() => {
 		async function fetchTransactionData() {
-			const receipt = await alchemy.core.getTransactionReceipt();
+			const receipt = await alchemy.core.getTransactionReceipt(id);
 			setTransaction(receipt);
 		}
 
@@ -39,7 +39,7 @@ const TransactionDetailsPage = () => {
 	} = transaction;
 
 	return (
-		<div className="TransactionDetailsPage">
+		<div className={styles.TransactionDetailsPage}>
 			{!transaction.from && <Loading />}
 			{transaction.from && (
 				<>
@@ -71,8 +71,8 @@ const TransactionDetailsPage = () => {
 							</Stack>
 						</CardContent>
 					</Card>
-					<p className="backToBlockExplorer">
-						<NavLink to="/xplore">Back to block explorer</NavLink>
+					<p className={styles.backToBlockExplorer}>
+						<NavLink to="/block-explorer">Back to block explorer</NavLink>
 					</p>
 				</>
 			)}

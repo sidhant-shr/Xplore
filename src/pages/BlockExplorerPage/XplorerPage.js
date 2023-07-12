@@ -1,10 +1,8 @@
- import React from 'react'
-import BlockExplorer from '../../components/BlockExplorer/BlockExplorer';
- 
- const XplorerPage = () => {
-   return (
-      <BlockExplorer/>
-   )
- }
- 
- export default XplorerPage;
+import React from "react";
+import BlockExplorer from "../../components/BlockExplorer/BlockExplorer";
+
+const BlockExplorerPage = () => {
+	return <BlockExplorer />;
+};
+
+export default BlockExplorerPage;

@@ -2,7 +2,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import DataTable from "../DataTable/DataTable";
-import styles from "./TransactionsGrid.module.css";
+import styles from "./TransactionGrid.module.css";
 
 const columns = [
 	{
